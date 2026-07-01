@@ -1,0 +1,93 @@
+{
+  "name": "esp8266-rtos-sdk-branch-release-v3_4-devcontainer",
+  "build": {
+    "dockerfile": "Containerfile",
+    "context": "."
+  },
+  "remoteUser": "esp8266",
+  "containerUser": "esp8266",
+  "updateRemoteUserUID": true,
+  "remoteEnv": {
+    "ESPPORT": "/dev/ttyUSB0"
+  },
+  "runArgs": [
+    "--name=devcontainer-${localWorkspaceFolderBasename}",
+    "--hostname=${localWorkspaceFolderBasename}",
+    "--userns=keep-id",
+    "--device=/dev/ttyUSB0",
+    "--annotation=run.oci.keep_original_groups=1"
+  ],
+  "postCreateCommand": "idf.py reconfigure",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.cpptools-extension-pack",
+        "seunlanlege.action-buttons"
+      ],
+      "settings": {
+        "C_Cpp.intelliSenseEngine": "default",
+        "C_Cpp.default.intelliSenseMode": "gcc-x86",
+        "C_Cpp.default.compilerPath": "/home/esp8266/.espressif/tools/xtensa-lx106-elf/esp-2020r3-49-gd5524c1-8.4.0/xtensa-lx106-elf/bin/xtensa-lx106-elf-gcc",
+        "C_Cpp.default.compileCommands": "${workspaceFolder}/build/compile_commands.json",
+        "C_Cpp.default.includePath": ["${workspaceFolder}/**"],
+        "C_Cpp.default.browse.path": ["${workspaceFolder}"],
+        "C_Cpp.default.browse.limitSymbolsToIncludedHeaders": true,
+        "cmake.generator": "Ninja",
+        "cmake.configureOnOpen": false,
+        "cmake.configureOnEdit": false,
+        "cmake.automaticReconfigure": false,
+        "cmake.showSystemKits": false,
+        "cmake.enableAutomaticKitScan": false,
+        "cmake.ignoreCMakeListsMissing": true,
+        "cmake.options.advanced": {
+          "build": {
+            "statusBarVisibility": "hidden"
+          },
+          "launch": {
+            "statusBarVisibility": "hidden"
+          },
+          "debug": {
+            "statusBarVisibility": "hidden"
+          }
+        },
+        "actionButtons.commands": [
+          {
+            "name": "$(settings-gear) Menuconfig",
+            "command": "idf.py menuconfig",
+            "singleInstance": true
+          },
+          {
+            "name": "$(wrench) Build",
+            "command": "idf.py --ccache build",
+            "singleInstance": true
+          },
+          {
+            "name": "$(info) IDF Size",
+            "command": "idf.py size",
+            "singleInstance": true
+          },
+          {
+            "name": "$(trash) Full Clean",
+            "command": "idf.py fullclean",
+            "singleInstance": true
+          },
+          {
+            "name": "$(zap) Flash",
+            "command": "idf.py --ccache -p $ESPPORT flash",
+            "singleInstance": true
+          },
+          {
+            "name": "$(close-all) Erase Flash",
+            "command": "idf.py -p $ESPPORT erase_flash",
+            "singleInstance": true
+          },
+          {
+            "name": "$(vm) Monitor",
+            "command": "idf.py -p $ESPPORT monitor",
+            "singleInstance": true
+          }
+        ]
+      }
+    }
+  }
+}
