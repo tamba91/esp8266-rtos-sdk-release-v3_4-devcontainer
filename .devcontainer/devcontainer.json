@@ -1,5 +1,5 @@
 {
-  "name": "esp8266-rtos-sdk-branch-release-v3_4-devcontainer",
+  "name": "esp8266-rtos-sdk-release-v3_4-devcontainer",
   "build": {
     "dockerfile": "Containerfile",
     "context": "."
