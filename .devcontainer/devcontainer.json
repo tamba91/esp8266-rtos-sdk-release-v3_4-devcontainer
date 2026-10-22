@@ -1,9 +1,13 @@
 {
   "name": "esp8266-rtos-sdk-release-v3_4-devcontainer",
-  "build": {
-    "dockerfile": "Containerfile",
-    "context": "."
-  },
+
+  "image": "ghcr.io/tamba91/esp8266-rtos-sdk-release-v3_4-devcontainer:latest",
+  
+  // "build": {
+  //   "dockerfile": "Containerfile",
+  //   "context": "."
+  // },
+  
   "remoteUser": "esp8266",
   "containerUser": "esp8266",
   "updateRemoteUserUID": true,
