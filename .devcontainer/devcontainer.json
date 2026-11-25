@@ -21,7 +21,6 @@
     "--device=/dev/ttyUSB0",
     "--annotation=run.oci.keep_original_groups=1"
   ],
-  "postCreateCommand": "idf.py reconfigure",
   "customizations": {
     "vscode": {
       "extensions": [
