@@ -10,14 +10,14 @@
   
   "remoteUser": "esp8266",
   "containerUser": "esp8266",
-  "updateRemoteUserUID": true,
+  "updateRemoteUserUID": false,
   "remoteEnv": {
     "ESPPORT": "/dev/ttyUSB0"
   },
   "runArgs": [
     "--name=devcontainer-${localWorkspaceFolderBasename}",
     "--hostname=${localWorkspaceFolderBasename}",
-    "--userns=keep-id",
+    "--userns=keep-id:uid=1000,gid=1000",
     "--device=/dev/ttyUSB0",
     "--annotation=run.oci.keep_original_groups=1"
   ],

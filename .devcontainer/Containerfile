@@ -27,7 +27,8 @@ USER ${USERNAME}
 
 WORKDIR /home/${USERNAME}/esp
 
-RUN git clone -b release/v3.4 --recursive https://github.com/espressif/ESP8266_RTOS_SDK.git
+RUN git clone -b release/v3.4 --single-branch --recursive https://github.com/espressif/ESP8266_RTOS_SDK.git
+
 WORKDIR /home/${USERNAME}/esp/ESP8266_RTOS_SDK
 RUN ./install.sh
 
